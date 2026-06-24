@@ -20,6 +20,13 @@ function M.prompt(t)
   end)
 end
 
+function M.insert_cr()
+  vim.schedule(function()
+    vim.cmd.startinsert() -- needed, since otherwise Neovim will do this
+    vim.api.nvim_input("<cr>")
+  end)
+end
+
 ---@param source string
 ---@param t sidekick.cli.Terminal
 local function picker(source, t)

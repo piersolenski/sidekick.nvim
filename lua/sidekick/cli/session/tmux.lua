@@ -191,7 +191,8 @@ function M:dump()
   if not pane_id then
     return
   end
-  local _, ret = Util.exec({ "tmux", "capture-pane", "-p", "-t", pane_id, "-S", "-", "-E", "-", "-e" })
+  local _, ret =
+    Util.exec({ "tmux", "capture-pane", "-p", "-t", pane_id, "-S", "-" .. Config.cli.mux.dump, "-E", "-", "-e" })
   return ret
 end
 
